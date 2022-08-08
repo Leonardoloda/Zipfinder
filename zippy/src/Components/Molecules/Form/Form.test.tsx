@@ -15,7 +15,9 @@ describe("<Form/ >", () => {
 
   it("should submit a code and country", () => {
     const searchZipCode = jest.fn();
-    const screen = render(withContext(<Form searchZipCode={searchZipCode} />));
+    const clearHistory = jest.fn();
+    /* eslint-disable */
+    const screen = render(withContext(<Form searchZipCode={searchZipCode} clearHistory={clearHistory} />));
 
     const zipInput = screen.getByRole("spinbutton");
     const countryInput = screen.getByRole("combobox");

@@ -11,16 +11,22 @@ import { Results } from "../../Molecules/Results/Results";
 import { Action } from "./Finder.types";
 
 import "./Finder.scss";
+import { HistoryConstants } from "../../../Constants/HistoryConstants";
 
 const reducer = (
   state: Array<QueryZipTypes>,
   action: Action
 ): Array<QueryZipTypes> => {
   switch (action.type) {
-    case "ADD":
+    case HistoryConstants.ADD:
+      if(!action.payload)
+        throw new Error("Payload required")
+
       return state.length < 5
         ? [...state, action.payload]
         : [...state.slice(1, state.length), action.payload];
+    case HistoryConstants.CLEAR:
+      return [];
     default:
       return state;
   }
@@ -40,14 +46,18 @@ export const Finder: React.FC<{}> = () => {
 
     if (error) setError(error);
     if (data) {
-      dispatch({ type: "ADD", payload: data.queryZipByCountryAndCode });
+      dispatch({ type: HistoryConstants.ADD, payload: data.queryZipByCountryAndCode });
       setError(null);
     }
   };
 
+  const clearHistory = () => {
+    dispatch({ type: HistoryConstants.CLEAR })
+  }
+
   return (
     <>
-      <Form searchZipCode={searchZipCode} />
+      <Form searchZipCode={searchZipCode} clearHistory={clearHistory} />
       {error && <p className="error">{error.message}</p>}
       <Results addresses={addresses} />
     </>

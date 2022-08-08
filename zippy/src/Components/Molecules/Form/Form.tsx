@@ -9,7 +9,7 @@ import { FormProps } from "./Form.types";
 
 import "./Form.scss";
 
-export const Form: React.FC<FormProps> = ({ searchZipCode }) => {
+export const Form: React.FC<FormProps> = ({ searchZipCode, clearHistory }) => {
   const [zip, setZip] = useState(0);
   const [country, setCountry] = useState("us");
   const countries = useContext(CountriesContext);
@@ -33,39 +33,44 @@ export const Form: React.FC<FormProps> = ({ searchZipCode }) => {
   };
 
   return (
-    <form onSubmit={submitForm} className="form">
-      <div className="form__fields">
-        <label htmlFor="zip">Zip:</label>
-        <input
-          type="number"
-          name="zip"
-          id="zip"
-          required
-          className="form__input"
-          onChange={zipHandler}
-          value={zip}
-        />
+    <div className="form">
+      <form onSubmit={submitForm}>
+        <div className="form__fields">
+          <label htmlFor="zip">Zip:</label>
+          <input
+            type="number"
+            name="zip"
+            id="zip"
+            required
+            className="form__input"
+            onChange={zipHandler}
+            value={zip}
+          />
 
-        <label htmlFor="country">Country: </label>
-        <select
-          name="country"
-          id="country"
-          required
-          className="form__input"
-          onChange={countryHandler}
-          value={country}
-        >
-          {countries.map(({ value, label }) => (
-            <option value={value} key={value}>
-              {label}
-            </option>
-          ))}
-        </select>
-      </div>
+          <label htmlFor="country">Country: </label>
+          <select
+            name="country"
+            id="country"
+            required
+            className="form__input"
+            onChange={countryHandler}
+            value={country}
+          >
+            {countries.map(({ value, label }) => (
+              <option value={value} key={value}>
+                {label}
+              </option>
+            ))}
+          </select>
+        </div>
 
-      <button className="form__submit" type="submit">
-        Search
+        <button className="form__submit" type="submit">
+          Search
+        </button>
+      </form>
+      <button className="form__clear" onClick={clearHistory}>
+        Clear history
       </button>
-    </form>
+    </div>
   );
 };

@@ -19,10 +19,12 @@
     border-bottom: 1px solid $green-letter;
   }
 
-  &__submit {
+  &__submit, &__clear {
     background-color: $green-letter;
     border: none;
     color: black;
+    margin: 12px 0;
     padding: 4px;
+    width: 100%;
   }
 }
