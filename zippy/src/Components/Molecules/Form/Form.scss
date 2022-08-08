@@ -1,0 +1,28 @@
+@import "../../../Theme/Colors.scss";
+
+.form {
+  color: $green-letter;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10%;
+
+  &__fields {
+    display: flex;
+    justify-content: space-between;
+    margin: 12px 0;
+  }
+
+  &__input {
+    background-color: black;
+    border: none;
+    color: $green-letter;
+    border-bottom: 1px solid $green-letter;
+  }
+
+  &__submit {
+    background-color: $green-letter;
+    border: none;
+    color: black;
+    padding: 4px;
+  }
+}

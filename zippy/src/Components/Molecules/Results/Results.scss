@@ -1,0 +1,10 @@
+@import "../../../Theme/Colors.scss";
+
+.results {
+  color: $green-letter;
+  display: flex;
+  flex-direction: column;
+  padding: 0 10%;
+  list-style-type: none;
+  text-align: center;
+}
