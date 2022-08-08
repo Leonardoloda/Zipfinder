@@ -1,0 +1,17 @@
+{
+  "name": "ZIPfinder",
+  "version": "1.0.0",
+  "description": "Monorepo",
+  "scripts": {
+    "start:react": "yarn --cwd zippy start",
+    "start:apollo": "yarn --cwd apollo-zip start"
+  },
+  "main": "index.js",
+  "author": "Leonardo Lopez Daza",
+  "license": "MIT",
+  "private":true,
+  "workspaces": [
+    "apollo-zip",
+    "zippy"
+  ]
+}
